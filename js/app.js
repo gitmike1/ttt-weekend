@@ -1,4 +1,5 @@
-/*-------------------------------- Constants --------------------------------*/
+/*-------------------------------- Constants 
+--------------------------------*/
 
 
 
@@ -67,4 +68,17 @@ function render(){
 }
 
 
+const winningCombos = [
+  boardArr[0]+boardArr[1]+boardArr[2]=== 3 || -3,
+  boardArr[3]+boardArr[4]+boardArr[5]=== 3 || -3,
+  boardArr[6]+boardArr[7]+boardArr[8]=== 3 || -3,
+  boardArr[0]+boardArr[3]+boardArr[6]=== 3 || -3,
+  boardArr[1]+boardArr[4]+boardArr[7]=== 3 || -3,
+  boardArr[2]+boardArr[5]+boardArr[8]=== 3 || -3,
+  boardArr[0]+boardArr[4]+boardArr[8]=== 3 || -3,
+  boardArr[2]+boardArr[4]+boardArr[6]=== 3 || -3
+  
 
+]
+
+console.log(winningCombos)
