@@ -37,34 +37,26 @@ function render(){
       squareElems[idx].textContent ="X" 
       squareElems[idx].style.color ="red" 
       squareElems[idx].style.background = "blue" 
-      
-      
     }
     if(square === -1) {
       squareElems[idx].textContent = "O"
       squareElems[idx].style.color = "blue"
       squareElems[idx].style.background = "red"
-      
     }
-    // 3.3.2) Render a message reflecting the currrent game state:
+    
   })
-
-  //let winner = "5"
-
-  if (winner === null) {
+  // 3.3.2) Render a message reflecting the currrent game state:
+    if (winner === null) {
     statusMessage.textContent = `it's ${turn ===1 ? 'X' : 'O'}'s turn`
-  }
-
-  else if (winner === 'T') {
+    }
+    else if (winner === 'T') {
     statusMessage.textContent = "It's a tie!"
-  }
-
-  else {
+    }
+    else {
     statusMessage.textContent = `Congratulations, ${winner === 1 ? 'X' : 'O'}  wins!)`
-  }
-
-
+    }
 }
+
 
 // 4.1) Define the 8 possible winning combinations as an array of arrays.
 const winningCombos = [
@@ -85,16 +77,15 @@ console.log(winningCombos)
 
   function handleClick(event) {
     let sqIdx = (event.target.id).replace('sq','')
-    if ((boardArr[sqIdx]) === 1 || -1) {
-      return
-    }
-    if (winner !== null) {
-      return
-    }
-    boardArr[sqIdx] = turn
-  turn = turn * -1
+    if (boardArr[sqIdx] === null && winner === null) {
    
+    boardArr[sqIdx] = turn
+    console.log(boardArr)
+    turn = turn * -1
+    render()
     }
+}
+
   	// 5.6) Set the winner variable if there's a winner by calling a new function: getWinner.
 	  
     function getWinner() {
@@ -102,5 +93,6 @@ console.log(winningCombos)
         if (Math.abs(boardArr[combo[0]] + boardArr[combo[1]] + boardArr[combo[2]]) === 3) {
         winner = boardArr[combo[0]]
         }
+        
       })
     }
