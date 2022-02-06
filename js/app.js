@@ -125,10 +125,10 @@ function getWinner() {
 
      //const tie = 
   if (xWins) {
-  winner === 1
+  winner = 1
   } else if (oWins) {
-  winner === -1
+  winner = -1
   } 
-  render()
   console.log("winner" + winner)
+  render()
 }
