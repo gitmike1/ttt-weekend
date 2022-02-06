@@ -118,9 +118,10 @@ function getWinner() {
     
   let xWins = addCombos.some(element => element == 3)
   let oWins = addCombos.some(element => element == -3)
+  let tie = boardArr.every(element => element != null)
   console.log("xWins" + xWins)
   console.log("oWins" + oWins)
-  
+  console.log("tie" + tie)
   
 
      //const tie = 
@@ -128,7 +129,9 @@ function getWinner() {
   winner = 1
   } else if (oWins) {
   winner = -1
-  } 
+  } else if (tie) {
+    winner = 'T'
+  }
   console.log("winner" + winner)
   render()
 }
