@@ -12,6 +12,7 @@ let winner
 let squareElems = document.querySelectorAll('.square')
 let statusMessage = document.querySelector('#message')
 let board = document.querySelector('.board')
+let replay = document.querySelector('#replay')
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -43,7 +44,11 @@ function render(){
       squareElems[idx].style.color = "blue"
       squareElems[idx].style.background = "red"
     }
-    
+    if(square === null) {
+      squareElems[idx].textContent =""
+      squareElems[idx].style.color = ""
+      squareElems[idx].style.background = ""
+    }
   })
   // 3.3.2) Render a message reflecting the currrent game state:
     if (winner === null) {
@@ -135,3 +140,13 @@ function getWinner() {
   console.log("winner" + winner)
   render()
 }
+
+
+// 6.1 Add a replay button
+
+
+replay.addEventListener("click", init)
+init()
+
+
+
