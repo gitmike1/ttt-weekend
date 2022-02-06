@@ -2,7 +2,6 @@
 --------------------------------*/
 
 
-
 /*---------------------------- Variables (state) ----------------------------*/
 
 let turn 
@@ -12,7 +11,7 @@ let winner
 /*------------------------ Cached Element References ------------------------*/
 let squareElems = document.querySelectorAll('.square')
 let statusMessage = document.querySelector('#message')
-
+let board = document.querySelector('.board')
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -24,7 +23,7 @@ init()
 
 // 3.2.1) Initialize the board array to 9 nulls to represent empty squares.
 function init(){
-  boardArr = [1, 1, 1, -1, -1, 1, null, null, 1]
+  boardArr = [null, null, null, null, null, null, null, null, null]
   turn = 1
   winner = null
   render() 
@@ -67,7 +66,7 @@ function render(){
 
 }
 
-
+// 4.1) Define the 8 possible winning combinations as an array of arrays.
 const winningCombos = [
   boardArr[0]+boardArr[1]+boardArr[2]=== 3 || -3,
   boardArr[3]+boardArr[4]+boardArr[5]=== 3 || -3,
@@ -77,8 +76,22 @@ const winningCombos = [
   boardArr[2]+boardArr[5]+boardArr[8]=== 3 || -3,
   boardArr[0]+boardArr[4]+boardArr[8]=== 3 || -3,
   boardArr[2]+boardArr[4]+boardArr[6]=== 3 || -3
-  
-
 ]
+//console.log(winningCombos)
 
-console.log(winningCombos)
+// 5) Next, the app should wait for the user to click a square and call a handleClick function
+  board.addEventListener("click", handleClick)
+
+  function handleClick(event) {
+    let sqIdx = (event.target.id).replace('sq','')
+    if ((boardArr[sqIdx]) === 1 || -1) {
+      return
+    }
+    if (winner !== null) {
+      return
+    }
+    boardArr[sqIdx] = turn
+  turn = turn * -1
+   
+    }
+  
