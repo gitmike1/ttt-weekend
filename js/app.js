@@ -60,39 +60,75 @@ function render(){
 
 // 4.1) Define the 8 possible winning combinations as an array of arrays.
 const winningCombos = [
-  [boardArr[0],boardArr[1],boardArr[2]],
-  [boardArr[3],boardArr[4],boardArr[5]],
-  [boardArr[6],boardArr[7],boardArr[8]],
-  [boardArr[0],boardArr[3],boardArr[6]],
-  [boardArr[1],boardArr[4],boardArr[7]],
-  [boardArr[2],boardArr[5],boardArr[8]],
-  [boardArr[0],boardArr[4],boardArr[8]],
-  [boardArr[2],boardArr[4],boardArr[6]]
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
 ]
+  
+  
+console.log("winningCombos")
 console.log(winningCombos)
 //console.log(winningCombos)
 
 // 5) Next, the app should wait for the user to click a square and call a handleClick function
-  board.addEventListener("click", handleClick)
+board.addEventListener("click", handleClick)
 
   function handleClick(event) {
-    let sqIdx = (event.target.id).replace('sq','')
+    let sqIdx = parseInt((event.target.id).replace('sq',''))
     if (boardArr[sqIdx] === null && winner === null) {
-   
-    boardArr[sqIdx] = turn
-    console.log(boardArr)
-    turn = turn * -1
-    render()
+      boardArr[sqIdx] = turn
+      turn = turn * -1
+      render()
+      getWinner()
     }
-}
+  }
 
   	// 5.6) Set the winner variable if there's a winner by calling a new function: getWinner.
-	  
-    function getWinner() {
-      winningCombos.forEach(function(combo){
-        if (Math.abs(boardArr[combo[0]] + boardArr[combo[1]] + boardArr[combo[2]]) === 3) {
-        winner = boardArr[combo[0]]
-        }
-        
-      })
-    }
+	//   const sums =[]
+  // function getWinner() {
+  //     winningCombos.forEach(function(combo, idx){
+  //       let addCombos = (Math.abs(boardArr[combo[0]] + boardArr[combo[1]] + boardArr[combo[2]]))
+  //       if (addCombos === 3) {
+  //         winner = boardArr[combo[0]]
+  //       }
+  //      if (boardArr[combo] !== null) {
+  //       winner === "T"
+  //     }
+
+  //     else {
+  //       winner === null
+  //     }
+  //     }) 
+  //     getWinner()
+  //     render()
+   // }
+function getWinner() {
+  let addCombos = []
+  for(let i = 0; i < winningCombos.length; i++) {
+    let total = boardArr[winningCombos[i][0]] + boardArr[winningCombos[i][1]] + boardArr[winningCombos [i][2]]
+    addCombos.push(total)
+    console.log("total" + total)
+    console.log("i" + i)
+  }
+    
+  let xWins = addCombos.some(element => element == 3)
+  let oWins = addCombos.some(element => element == -3)
+  console.log("xWins" + xWins)
+  console.log("oWins" + oWins)
+  
+  
+
+     //const tie = 
+  if (xWins) {
+  winner === 1
+  } else if (oWins) {
+  winner === -1
+  } 
+  render()
+  console.log("winner" + winner)
+}
