@@ -68,15 +68,16 @@ function render(){
 
 // 4.1) Define the 8 possible winning combinations as an array of arrays.
 const winningCombos = [
-  boardArr[0]+boardArr[1]+boardArr[2]=== 3 || -3,
-  boardArr[3]+boardArr[4]+boardArr[5]=== 3 || -3,
-  boardArr[6]+boardArr[7]+boardArr[8]=== 3 || -3,
-  boardArr[0]+boardArr[3]+boardArr[6]=== 3 || -3,
-  boardArr[1]+boardArr[4]+boardArr[7]=== 3 || -3,
-  boardArr[2]+boardArr[5]+boardArr[8]=== 3 || -3,
-  boardArr[0]+boardArr[4]+boardArr[8]=== 3 || -3,
-  boardArr[2]+boardArr[4]+boardArr[6]=== 3 || -3
+  [boardArr[0],boardArr[1],boardArr[2]],
+  [boardArr[3],boardArr[4],boardArr[5]],
+  [boardArr[6],boardArr[7],boardArr[8]],
+  [boardArr[0],boardArr[3],boardArr[6]],
+  [boardArr[1],boardArr[4],boardArr[7]],
+  [boardArr[2],boardArr[5],boardArr[8]],
+  [boardArr[0],boardArr[4],boardArr[8]],
+  [boardArr[2],boardArr[4],boardArr[6]]
 ]
+console.log(winningCombos)
 //console.log(winningCombos)
 
 // 5) Next, the app should wait for the user to click a square and call a handleClick function
@@ -94,4 +95,12 @@ const winningCombos = [
   turn = turn * -1
    
     }
-  
+  	// 5.6) Set the winner variable if there's a winner by calling a new function: getWinner.
+	  
+    function getWinner() {
+      winningCombos.forEach(function(combo){
+        if (Math.abs(boardArr[combo[0]] + boardArr[combo[1]] + boardArr[combo[2]]) === 3) {
+        winner = boardArr[combo[0]]
+        }
+      })
+    }
