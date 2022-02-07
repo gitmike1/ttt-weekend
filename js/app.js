@@ -59,6 +59,7 @@ function render(){
     }
     else {
     statusMessage.textContent = `Congratulations, ${winner === 1 ? 'X' : 'O'}  wins!)`
+    confetti.start(3000)
     }
 }
 
