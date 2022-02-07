@@ -58,7 +58,7 @@ function render(){
     statusMessage.textContent = "It's a tie!"
     }
     else {
-    statusMessage.textContent = `Congratulations, ${winner === 1 ? 'X' : 'O'}  wins!)`
+    statusMessage.textContent = `Congratulations, ${winner === 1 ? 'X' : 'O'}  wins!!!`
     confetti.start(3000)
     }
 }
