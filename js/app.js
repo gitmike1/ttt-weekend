@@ -36,12 +36,12 @@ function render(){
     //console.log(square)
     if(square === 1) {
       squareElems[idx].textContent ="X" 
-      squareElems[idx].style.color ="red" 
+      squareElems[idx].style.color ="white" 
       squareElems[idx].style.background = "blue" 
     }
     if(square === -1) {
       squareElems[idx].textContent = "O"
-      squareElems[idx].style.color = "blue"
+      squareElems[idx].style.color = "white"
       squareElems[idx].style.background = "red"
     }
     if(square === null) {
